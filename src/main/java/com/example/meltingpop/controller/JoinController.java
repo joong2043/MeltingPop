@@ -14,7 +14,7 @@ public class JoinController {
         this.userService = userService;
     }
 
-    @GetMapping(value="join")
+    @GetMapping(value="/join")
     public String join(){
         return "templates/user/signup";
     }

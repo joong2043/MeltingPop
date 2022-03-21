@@ -8,15 +8,15 @@ public class UserDto {
     private String userId;
     private String userPw;
     private String userEmail;
-
+    // 생성자 파라미터를 주입해주기
     public User toEntity(){
-        User build = User.builder()
+        User userBuild = User.builder()
                 .userNum(userNum)
                 .userId(userId)
                 .userPw(userPw)
                 .userEmail(userEmail)
                 .build();
-        return build;
+        return userBuild;
     }
 
     @Builder
