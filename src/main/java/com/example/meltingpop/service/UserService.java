@@ -1,5 +1,6 @@
 package com.example.meltingpop.service;
 
+import com.example.meltingpop.dto.UserDto;
 import com.example.meltingpop.entity.User;
 import com.example.meltingpop.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -16,12 +17,12 @@ public class UserService {
     }
 
     // 회원 가입 관련 메소드 생성하자
-    public void join(User user){
+    public void join(UserDto userDto){
         // JoinController를 통해 url 접속만해도 DB에 데이터가 저장되어서
         // if(user!=null) 조건문을 붙혔는데, user는 자동으로 생성되는(userNum 때문인 거 같음) 구조라서
         // user.getUserId!=null 조건문을 이용
-        if(user.getUserId()!=null){
-            userRepository.save(user);
+        if (userDto.getUserId()!=null) {
+            userRepository.save(userDto.toEntity());
         }
     }
 

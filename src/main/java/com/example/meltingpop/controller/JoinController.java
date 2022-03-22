@@ -1,5 +1,6 @@
 package com.example.meltingpop.controller;
 
+import com.example.meltingpop.dto.UserDto;
 import com.example.meltingpop.entity.User;
 import com.example.meltingpop.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,8 @@ public class JoinController {
     }
 
     @PostMapping("/join")
-    public String join(User user){
-        userService.join(user);
+    public String join(UserDto userDto){
+        userService.join(userDto);
 
         return "static/index";
     }

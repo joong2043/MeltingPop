@@ -2,7 +2,11 @@ package com.example.meltingpop.dto;
 
 import com.example.meltingpop.entity.User;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class UserDto {
     private Long userNum;
     private String userId;
