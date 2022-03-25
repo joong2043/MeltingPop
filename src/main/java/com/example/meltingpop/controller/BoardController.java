@@ -2,8 +2,10 @@ package com.example.meltingpop.controller;
 
 import com.example.meltingpop.dto.BoardDto;
 import com.example.meltingpop.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class BoardController {
         return "static/index";
     }
 
-    @GetMapping("/post")
+    @PostMapping("/post")
     public String write(BoardDto boardDto){
         boardService.savePost(boardDto);
         return "static/index";
