@@ -1,10 +1,8 @@
 package com.example.meltingpop.papago;
-/*
-import org.json.simple.JSONArray;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-*/
 
 import org.springframework.stereotype.Service;
 
@@ -19,16 +17,16 @@ import java.util.Map;
 @Service
 public class PapagoAPI {
 
-
-    public void getEnglish(String s) {
+    public Object getKorean(String englishword) {
 
         String clientId = "590IBZkNkAbhHcJ_i9gQ";//애플리케이션 클라이언트 아이디값";
         String clientSecret = "RlEgVRBtII";//애플리케이션 클라이언트 시크릿값";
 
         String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
         String text;
+        Object translatedKorean = null;
         try {
-            text = URLEncoder.encode(s, "UTF-8");
+            text = URLEncoder.encode(englishword, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("인코딩 실패", e);
         }
@@ -38,8 +36,20 @@ public class PapagoAPI {
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
 
         String responseBody = post(apiURL, requestHeaders, text);
-        System.out.println("responseBody = " + responseBody);
+   try {
 
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jsonObject = (JSONObject) jsonParser.parse(responseBody);
+
+        JSONObject messageObject = (JSONObject) jsonObject.get("message");
+        JSONObject resultObject = (JSONObject) messageObject.get("result");
+
+        translatedKorean = resultObject.get("translatedText");
+
+    } catch(ParseException e){
+        e.printStackTrace();
+    }
+        return translatedKorean;
     }
 
     private String post(String apiUrl, Map<String, String> requestHeaders, String text){

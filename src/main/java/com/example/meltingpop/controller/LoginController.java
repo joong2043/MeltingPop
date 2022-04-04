@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class LoginController {
     private UserService userService;
-
     public LoginController(UserService userService){
         this.userService = userService;
     }
