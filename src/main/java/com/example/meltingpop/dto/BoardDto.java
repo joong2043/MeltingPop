@@ -2,10 +2,14 @@ package com.example.meltingpop.dto;
 
 
 import com.example.meltingpop.entity.Board;
-import lombok.Builder;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@ToString
+@Getter
+@Setter
+@NoArgsConstructor
 public class BoardDto {
     private Long boardNum;
     private String boardTitle;

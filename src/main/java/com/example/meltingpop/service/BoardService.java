@@ -13,16 +13,18 @@ import java.util.List;
 public class BoardService {
     private BoardRepository boardRepository;
 
+    // BoardRepository 클래스에 있는 객체를 BoardService 클래스에 주입
     public BoardService(BoardRepository boardRepository){
         this.boardRepository = boardRepository;
     }
 
+    // 게시물 저장하는 메소드
     @Transactional
-    public void savePost(BoardDto boardDto){
-        boardRepository.save(boardDto.toEntity());
+    public Long savePost(BoardDto boardDto){
+        return boardRepository.save(boardDto.toEntity()).getBoardNum();
     }
 
-    // Board 데이터에 있는 걸 찾아서 BoardDto에 넣자
+    // Board 데이터에 있는 모든 목록(데이터)를 찾아서 BoardDto에 넣어서 BoardDto에 있는 내용들을 Front 단으로 출력하기 위한 메서드
     @Transactional
     public List<BoardDto> getBoardList(){
         List<Board> boardList = boardRepository.findAll();

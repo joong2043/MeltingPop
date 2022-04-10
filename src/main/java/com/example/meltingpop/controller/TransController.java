@@ -37,15 +37,15 @@ public class TransController {
 
         //System.out.println(song_infos);
 
-        List<Song_Info> data = transRepository.findBySong("stay");
+        List<Song_Info> data = transRepository.findBySong("my universe");
 
-        String stayLyric = data.get(0).getLyric();
+        // String stayLyric = data.get(0).getLyric();
 
-        //korean = papagoAPI.getKorean(stayLyric);
+        // korean = papagoAPI.getKorean(stayLyric);
 
-        //transRepository.setKoreanLyricData(korean,"stay");
+        // transRepository.setKoreanLyricData(korean,"my universe");
 
-        //System.out.println("번역된 단어 : " + korean);
+        // System.out.println("번역된 단어 : " + korean);
         return "static/index";
     }
 }

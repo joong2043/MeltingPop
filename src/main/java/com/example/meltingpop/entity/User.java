@@ -32,12 +32,16 @@ public class User {
     @Column
     private String userEmail;
 
+    @Column
+    private Integer userAuthentication;
+
     @Builder
-    public User(Long userNum, String userId, String userPw, String userEmail){
+    public User(Long userNum, String userId, String userPw, String userEmail, Integer userAuthentication){
         this.userNum = userNum;
         this.userId = userId;
         this.userPw = userPw;
         this.userEmail = userEmail;
+        this.userAuthentication = userAuthentication;
     }
 
 }
