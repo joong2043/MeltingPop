@@ -45,8 +45,29 @@ public class BoardService {
     }
 
     @Transactional
-    public void editPost(BoardDto boardDto){
+    public BoardDto getPost(Long boardNum){
+        Board board = boardRepository.findById(boardNum).get();
 
+        BoardDto boardDto = BoardDto.builder()
+                .boardNum(board.getBoardNum())
+                .boardWriter(board.getWriter())
+                .boardTitle(board.getTitle())
+                .boardContent(board.getContent())
+                .boardCreatedDate(board.getCreatedDate())
+                .boardModifiedDate(board.getModifiedDate())
+                .build();
+
+        return boardDto;
+    }
+
+    @Transactional
+    public void updatePost(String changedContent, Long boardNum){
+        boardRepository.updateBoard(changedContent, boardNum);
+    }
+
+    @Transactional
+    public void deletePost(Long boardNum){
+        boardRepository.deleteById(boardNum);
     }
 
 }

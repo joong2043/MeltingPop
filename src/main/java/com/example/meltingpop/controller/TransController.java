@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,18 +29,19 @@ public class TransController {
 
     public Object korean;
 
-    @RequestMapping(value = "/trans", method = RequestMethod.GET)
-    public String trans(){
+    @PutMapping(value = "/trans")
+    public String trans(@Param("transSong") String transSong){
 
         //System.out.println(song_infos);
+        System.out.println(transSong);
 
-        List<Song_Info> data = transRepository.findBySong("my universe");
+        List<Song_Info> data = transRepository.findBySong(transSong);
 
-        // String stayLyric = data.get(0).getLyric();
+        String englishLyric = data.get(0).getLyric();
 
-        // korean = papagoAPI.getKorean(stayLyric);
+        korean = papagoAPI.getKorean(englishLyric);
 
-        // transRepository.setKoreanLyricData(korean,"my universe");
+        transService.englishToKorean(korean,transSong);
 
         // System.out.println("번역된 단어 : " + korean);
         return "static/index";

@@ -19,7 +19,7 @@ public interface TransRepository extends JpaRepository<Song_Info, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "update Song_Info u set u.koreanLyric=:koreanLyric where u.song=:song")
+    @Query("update Song_Info u set u.koreanLyric=:koreanLyric where u.song=:song")
     void setKoreanLyricData(@Param("koreanLyric")Object koreanLyric, @Param("song")String song);
 
 
