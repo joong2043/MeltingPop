@@ -14,10 +14,8 @@ import java.util.Optional;
 
 public interface TransRepository extends JpaRepository<Song_Info, Long> {
 
-
     public List<Song_Info> findBySong(String song);
 
-    @Transactional
     @Modifying
     @Query("update Song_Info u set u.koreanLyric=:koreanLyric where u.song=:song")
     void setKoreanLyricData(@Param("koreanLyric")Object koreanLyric, @Param("song")String song);

@@ -18,6 +18,7 @@ public class TransService {
         this.transRepository = transRepository;
     }
 
+    @Transactional
     public void englishToKorean(Object korean, String song){
         transRepository.setKoreanLyricData(korean,song);
     }
