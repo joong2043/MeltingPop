@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Query("select u from User u where u.userId=:userId and u.userPw=:userPw")
-    User selectUserInfo(@Param("userId")String userId, @Param("userPw")String userPw);
+    @Query("select u from User u where u.userEmail=:userEmail and u.userPw=:userPw")
+    User selectUserInfo(@Param("userEmail")String userEmail, @Param("userPw")String userPw);
 }

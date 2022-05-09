@@ -27,8 +27,8 @@ public class UserService {
     }
 
     // User 엔티티에 있는 데이터 select 해보기
-    public User login(String userId, String userPw){
-        User user = userRepository.selectUserInfo(userId, userPw);
+    public User login(String userEmail, String userPw){
+        User user = userRepository.selectUserInfo(userEmail, userPw);
         return user;
     }
 }

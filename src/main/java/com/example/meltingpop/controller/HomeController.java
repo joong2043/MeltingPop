@@ -8,6 +8,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String home(){
-        return "D:/MeltingPop-main/MeltingPop-main/index";
+        return "/static/index";
     }
 }
+
