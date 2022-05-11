@@ -13,6 +13,9 @@ public class UserDto {
     private String userPw;
     private String userEmail;
     private Integer userAuthentication;
+    private String userLyricChange;
+
+
     // 생성자 파라미터를 주입해주기
     public User toEntity(){
         User userBuild = User.builder()
@@ -21,16 +24,18 @@ public class UserDto {
                 .userPw(userPw)
                 .userEmail(userEmail)
                 .userAuthentication(userAuthentication)
+                .userLyricChange(userLyricChange)
                 .build();
         return userBuild;
     }
 
     @Builder
-    public UserDto(Long userNum,String userId, String userPw, String userEmail, Integer userAuthentication){
+    public UserDto(Long userNum,String userId, String userPw, String userEmail, Integer userAuthentication, String userLyricChange){
         this.userNum = userNum;
         this.userId = userId;
         this.userPw = userPw;
         this.userEmail = userEmail;
         this.userAuthentication = userAuthentication;
+        this.userLyricChange = userLyricChange;
     }
 }

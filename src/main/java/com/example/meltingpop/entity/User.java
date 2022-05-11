@@ -35,13 +35,18 @@ public class User {
     @Column
     private Integer userAuthentication;
 
+    @Column
+    private String userLyricChange;
+
     @Builder
-    public User(Long userNum, String userId, String userPw, String userEmail, Integer userAuthentication){
+    public User(Long userNum, String userId, String userPw, String userEmail, Integer userAuthentication, String userLyricChange){
         this.userNum = userNum;
         this.userId = userId;
         this.userPw = userPw;
         this.userEmail = userEmail;
         this.userAuthentication = userAuthentication;
+        this.userLyricChange = userLyricChange;
+
     }
 
 }
